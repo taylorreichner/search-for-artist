@@ -4,7 +4,7 @@ import Album from './Album';
 
 const AlbumsList = ({ albums }) => {
   return (
-    <ul>
+    <ul aria-label="album list">
       {albums.map((album) => {
         return <li key={album.releaseId}>
           <Album {...album} />
