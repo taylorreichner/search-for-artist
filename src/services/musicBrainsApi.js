@@ -21,10 +21,14 @@ export const getAlbumsByArtist = async (id) => {
   }));
 };
 
-export const getSongsByAlbum = async () => {
+export const getSongsByAlbum = async (id) => {
   // Release ID needs to be in arg
-  const response = await fetch('http://musicbrainz.org/ws/2/recording?release=869697bf-d684-4c31-894e-0e0cd27b1377&fmt=json');
+  const response = await fetch(`http://musicbrainz.org/ws/2/recording?release=${id}&fmt=json`);
   const result = await response.json();
   console.log('getSongsByAlbum', result);
-  return result;
+  return result.recordings.map((song) => ({
+    id: song.id,
+    title: song.title,
+    releaseDate: song['first-release-date'],
+  }));
 };
