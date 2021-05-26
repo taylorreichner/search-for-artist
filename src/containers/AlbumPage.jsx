@@ -1,16 +1,18 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import AlbumsList from '../components/albums/AlbumsList';
 import { getAlbumsByArtist } from '../services/musicBrainsApi';
 
 
-function AlbumPage({ match }) {
+function AlbumPage() {
   const [loading, setLoading] = useState(true);
   const [albums, setAlbums] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
     setLoading(true);
-    getAlbumsByArtist(match.params.id)
+    getAlbumsByArtist(id)
       .then(setAlbums)
       .finally(() => setLoading(false));
   }, []);
