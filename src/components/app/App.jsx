@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchPage from '../../containers/SearchPage';
 import AlbumPage from '../../containers/AlbumPage';
+import SongPage from '../../containers/SongPage';
 import { BrowserRouter as Router,
   Switch,
   Route,
@@ -17,6 +18,10 @@ export default function App() {
         <Route 
           exact path = "/albums/:id"
           component={AlbumPage}
+        />
+        <Route 
+          exact path = "/songs/:releaseId"
+          component={SongPage}
         />
       </Switch>
     </Router>

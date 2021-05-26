@@ -13,8 +13,12 @@ export const getAlbumsByArtist = async (id) => {
   // Artist ID needs to be in parens arg
   const response = await fetch(`http://musicbrainz.org/ws/2/release?artist=${id}&fmt=json`);
   const result = await response.json();
-  console.log('getAlbumsByArtist', result);
-  return result;
+  console.log('getAlbumsByArtist', result.releases);
+  return result.releases.map((album) => ({
+    releaseId: album.id,
+    title: album.title,
+    date: album.date,
+  }));
 };
 
 export const getSongsByAlbum = async () => {
