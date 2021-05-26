@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
-import ArtistList from '../components/app/artists/ArtistList';
+import ArtistList from '../components/artists/ArtistList';
 import { getArtists } from '../services/musicBrainsApi';
 
 const SearchPage = () => {

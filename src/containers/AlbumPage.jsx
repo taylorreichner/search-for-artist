@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-import AlbumsList from '../components/app/albums/AlbumsList';
+import AlbumsList from '../components/albums/AlbumsList';
 import { getAlbumsByArtist } from '../services/musicBrainsApi';
 
 
@@ -9,25 +9,16 @@ function AlbumPage({ match }) {
   const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
-    setLoading(false);
-  }, [albums]);
-
-  const handleArtistClick = async () => {
     setLoading(true);
-    const albums = await getAlbumsByArtist(match.params.id);
-    setAlbums(albums);
-  };
+    getAlbumsByArtist(match.params.id)
+      .then(setAlbums)
+      .finally(() => setLoading(false));
+  }, []);
 
-  // const handleAlbumSelect = async () => {
-  //   setAlbums();
-    
-
-  // };
-
-
+  if(loading) return <h1>Loading...</h1>;
   return (
     <>
-      <AlbumsList onclick={handleArtistClick} albums={albums}/>
+      <AlbumsList albums={albums}/>
     </>
   );
 }
