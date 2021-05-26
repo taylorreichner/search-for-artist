@@ -7,13 +7,11 @@ const Song = ({ title, releaseDate }) => {
 
   return (
     <>
-      <Link to={`/artist/${artist}/lyrics`} >
+      <Link to={`/artist/${artist}/title/${title}`} >
         <p>{title}</p>
         <p>{releaseDate}</p>
       </Link>
     </>
-
-   
   );
 };
 
