@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getLyrics } from '../services/lyricsApi';
@@ -14,12 +15,11 @@ const LyricPage = () => {
       .finally(() => setLoading(false));
   }, []);
 
-
+  if(loading) return <h1>Loading...</h1>;
   return (
-    <>
-      {loading ? <h1>loading...</h1>
-        : <section>{lyrics.lyrics}</section> }
-    </>
+    <ul aria-label="lyrics list">
+      <li>{lyrics.lyrics}</li> 
+    </ul>
   );
 };
 
