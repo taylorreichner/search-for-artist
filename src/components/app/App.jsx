@@ -1,13 +1,23 @@
 import React from 'react';
 import SearchPage from '../../containers/SearchPage';
-import {BrowserRouter as Router,
+import AlbumPage from '../../containers/AlbumPage';
+import { BrowserRouter as Router,
   Switch,
   Route,
-  } from 'react-router-dom';
+} from 'react-router-dom';
 
 export default function App() {
   return (
-  <Router>
-  <SearchPage />
-  </Router>
-  )}
+    <Router>
+      <Switch>
+        <Route 
+          exact path="/"
+          component={SearchPage} 
+        />
+        <Route 
+          exact path = "/albums/:id"
+          component={AlbumPage}
+        />
+      </Switch>
+    </Router>
+  );}
