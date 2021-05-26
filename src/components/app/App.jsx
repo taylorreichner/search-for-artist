@@ -16,11 +16,11 @@ export default function App() {
           component={SearchPage} 
         />
         <Route 
-          exact path = "/albums/:id"
+          exact path = "/artist/:artist/albums/:id"
           component={AlbumPage}
         />
         <Route 
-          exact path = "/songs/:releaseId"
+          exact path = "/artist/:artist/songs/:releaseId"
           component={SongPage}
         />
       </Switch>

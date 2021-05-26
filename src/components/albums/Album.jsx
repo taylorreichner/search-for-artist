@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const Album = ({ releaseId, date, title }) => {
+  const { artist } = useParams();
+
   return (
     <>
-      <Link to={`/songs/${releaseId}`}>
+      <Link to={`/artist/${artist}/songs/${releaseId}`}>
         <p>{title}</p>
         <p>{date}</p>
       </Link>  
