@@ -5,7 +5,7 @@ import Song from './Song';
 const SongList = ({ songs }) => {
 
   return (
-    <ul>
+    <ul aria-label='songs list'>
       {songs.map((song) => (
         <li key={song.id}>
           <Song {...song} />

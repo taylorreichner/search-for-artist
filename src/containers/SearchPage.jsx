@@ -53,8 +53,9 @@ const SearchPage = () => {
   return (
     <>
       <h1>This is our artists search page!!</h1>
-      <input type="text" placeholder="artist search" onChange={handleInputChange} value={searchQuery}></input>
-      <button onClick={handleSearchSubmit}>Search</button>
+      <label htmlFor="artist">artist</label>
+      <input id="artist" type="text" placeholder="artist search" onChange={handleInputChange} value={searchQuery}></input>
+      <button aria-label='find-artist' onClick={handleSearchSubmit}>Search</button>
       <button disabled={page === 0} onClick={handlePrevClick}>prev</button>
       <button onClick={handleNextClick}>next</button>
       <span>{page + 1}</span>
