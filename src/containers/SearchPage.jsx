@@ -18,8 +18,8 @@ const SearchPage = () => {
         .finally(() => setLoading(false));
     
     } else didMount.current = true;
-    console.log('DISABLED', disabled)
-  }, [page, disabled]);
+    
+  }, [page]);
 
   const handleSearchSubmit = async () => {
     setLoading(true);

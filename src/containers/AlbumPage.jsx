@@ -39,7 +39,7 @@ function AlbumPage() {
   return (
     <>
       <button disabled={page === 0} onClick={handlePrevClick}>prev</button>
-      <button onClick={handleNextClick}>next</button>
+      <button disabled={albums.length < 25} onClick={handleNextClick}>next</button>
       <span>{page + 1}</span>
       <AlbumsList albums={albums}/>
     </>
