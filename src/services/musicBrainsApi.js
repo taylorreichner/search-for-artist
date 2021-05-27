@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
-export const getArtists = async (query) => {
-  const response = await fetch(`http://musicbrainz.org/ws/2/artist?query=${query}&fmt=json&limit=25`);
+export const getArtists = async (query, page) => {
+  const response = await fetch(`http://musicbrainz.org/ws/2/artist?query='${query}'&fmt=json&limit=25&offset=${page}`);
   const result = await response.json();
   console.log('getArtist', result.artists);
   return result.artists.map((artist) => ({

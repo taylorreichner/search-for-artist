@@ -17,6 +17,7 @@ function AlbumPage() {
       .finally(() => setLoading(false));
   }, []);
 
+
   if(loading) return <h1>Loading...</h1>;
   return (
     <>
