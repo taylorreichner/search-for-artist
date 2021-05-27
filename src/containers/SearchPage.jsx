@@ -13,7 +13,7 @@ const SearchPage = () => {
   useEffect(() => {
     setLoading(false);
     if(didMount.current){
-      getArtists(searchQuery, ((page) * 25))
+      getArtists(searchQuery, (page * 25))
         .then(setArtists)
         .finally(() => setLoading(false));
     } else didMount.current = true;
