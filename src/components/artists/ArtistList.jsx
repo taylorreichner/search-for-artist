@@ -3,15 +3,22 @@ import PropTypes from 'prop-types';
 import Artist from './Artist';
 
 const ArtistList = ({ artists }) => {
-  const artistItems = artists.map(artist => (
-    <li key={artist.id}>
-      <Artist {...artist} />
-    </li>
-  ));
+  
+
+ // const artistItems = artists.map(artist => (
+   // <li key={artist.id}>
+     // <Artist {...artist} />
+   // </li>
+ // ))
 
   return (
     <ul>
-      {artistItems}
+      {artists && artists.map(artist => (
+    <li key={artist.id}>
+      <Artist {...artist} />
+    </li>
+  ))}
+      
     </ul>
   );};
 

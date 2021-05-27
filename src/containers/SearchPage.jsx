@@ -16,20 +16,24 @@ const SearchPage = () => {
       getArtists(searchQuery, (page * 25))
         .then(setArtists)
         .finally(() => setLoading(false));
+    
     } else didMount.current = true;
-
-  }, [page]);
+    console.log('DISABLED', disabled)
+  }, [page, disabled]);
 
   const handleSearchSubmit = async () => {
     setLoading(true);
     const artists = await getArtists(searchQuery, page); 
     setArtists(artists);
-    // setSearchQuery('');
+    
     setLoading(false);
+   
   };
+
 
   const handleInputChange = (e) => {
     setSearchQuery(e.target.value);
+   
   };
 
   const handlePrevClick = async () => {
@@ -57,7 +61,7 @@ const SearchPage = () => {
       <input id="artist" type="text" placeholder="artist search" onChange={handleInputChange} value={searchQuery}></input>
       <button aria-label='find-artist' onClick={handleSearchSubmit}>Search</button>
       <button disabled={page === 0} onClick={handlePrevClick}>prev</button>
-      <button onClick={handleNextClick}>next</button>
+      <button disabled={artists.length < 25} onClick={handleNextClick}>next</button>
       <span>{page + 1}</span>
       <ArtistList artists={artists} />
     </>
