@@ -1,8 +1,7 @@
 /* eslint-disable max-len */
 export const getArtists = async (query, page) => {
-  const response = await fetch(`http://musicbrainz.org/ws/2/artist?query='${query}'&fmt=json&limit=25&offset=${page}`);
+  const response = await fetch(`https://musicbrainz.org/ws/2/artist?query='${query}'&fmt=json&limit=25&offset=${page}`);
   const result = await response.json();
-  console.log('getArtist', result.artists);
   return result.artists.map((artist) => ({
     id: artist.id,
     name: artist.name,
@@ -11,9 +10,8 @@ export const getArtists = async (query, page) => {
 
 export const getAlbumsByArtist = async (id, page) => {
   // Artist ID needs to be in parens arg
-  const response = await fetch(`http://musicbrainz.org/ws/2/release?artist=${id}&fmt=json&limit=25&offset=${page}`);
+  const response = await fetch(`https://musicbrainz.org/ws/2/release?artist=${id}&fmt=json&limit=25&offset=${page}`);
   const result = await response.json();
-  console.log('getAlbumsByArtist', result.releases);
   return result.releases.map((album) => ({
     releaseId: album.id,
     title: album.title,
@@ -23,9 +21,8 @@ export const getAlbumsByArtist = async (id, page) => {
 
 export const getSongsByAlbum = async (id) => {
   // Release ID needs to be in arg
-  const response = await fetch(`http://musicbrainz.org/ws/2/recording?release=${id}&fmt=json`);
+  const response = await fetch(`https://musicbrainz.org/ws/2/recording?release=${id}&fmt=json`);
   const result = await response.json();
-  console.log('getSongsByAlbum', result);
   return result.recordings.map((song) => ({
     id: song.id,
     title: song.title,
