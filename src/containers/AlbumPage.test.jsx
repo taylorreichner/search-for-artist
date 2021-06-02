@@ -10,7 +10,7 @@ import { setupServer } from 'msw/node';
 import AlbumPage from './AlbumPage';
 
 const server = setupServer(
-  rest.get('http://musicbrainz.org/ws/2/release', (req, res, ctx) => {
+  rest.get('https://musicbrainz.org/ws/2/release', (req, res, ctx) => {
     return res (
       ctx.json({
         releases: [{
